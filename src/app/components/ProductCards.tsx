@@ -5,7 +5,7 @@ import imgProductImage1 from "figma:assetf4d0e827aa29e204b2f9441d26f6933510e6260
 import imgProductImage2 from "figma:assetf8286689f9715c03e8489a3bdee365c282f6538b.png";
 import imgImage2 from "figma:asset/099edb99409c17d1f669b48012e3ba2f0f7b73c3.png";
 import imgImage3 from "figma:asset/5d7b19ed7c3d8add6cd5768581d762d5aec00716.png";
-import imgImage4 from "figma:asset7140ac9ef4ed7ee8b39099827f07cd4d6b7f1049.png";
+import imgImage4 from "figma:asset/7140ac9ef4ed7ee8b39099827f07cd4d6b7f1049.png";
 
 function ExpandIcon() {
   return (
