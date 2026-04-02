@@ -1,5 +1,5 @@
 import svgPaths from "../../imports/svg-bn98ks4rcq";
-import imgSection1 from "figma:asset/6115d94a01a94ad18b0fcb49ec48c0b12b43ee4b.png";
+import imgSection1 from "../../asset/6115d94a01a94ad18b0fcb49ec48c0b12b43ee4b.png";
 
 function ArrowRight({ color = "white" }: { color?: string }) {
   return (
