@@ -1,8 +1,8 @@
 import svgPaths from "../../imports/svg-bn98ks4rcq";
-import imgDescImage from "../../asset/a73fc8227efea76964cc5d100bdeb554737a2bee.png";
-import imgDescImage1 from "../../asset/7aa7d8c3ba9bf6633cdaabb7eb952183ea36e58c.png";
-import imgDescImage2 from "../../asset/ece32c42fbdc5534f53d3be26704fb3ba9937728.png";
-import imgDescImage3 from "../../asset/7706f1fa806623bcf88f62698a8f41d83d84867b.png";
+import imgDescImage from "figma:asset/a73fc8227efea76964cc5d100bdeb554737a2bee.png";
+import imgDescImage1 from "figma:asset/7aa7d8c3ba9bf6633cdaabb7eb952183ea36e58c.png";
+import imgDescImage2 from "figma:asset/ece32c42fbdc5534f53d3be26704fb3ba9937728.png";
+import imgDescImage3 from "figma:asset/7706f1fa806623bcf88f62698a8f41d83d84867b.png";
 
 function ArrowRight({ color = "#635BFF" }: { color?: string }) {
   return (
