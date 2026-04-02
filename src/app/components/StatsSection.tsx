@@ -1,4 +1,4 @@
-import imgSection5 from "../../asset/b230a1c9826c6c1724876ac5b89d161e0c02ce47.png";
+import imgSection5 from "../../assets/b230a1c9826c6c1724876ac5b89d161e0c02ce47.png";
 
 const stats = [
   {
