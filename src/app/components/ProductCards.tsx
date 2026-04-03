@@ -1,17 +1,10 @@
 import svgPaths from "../../imports/svg-bn98ks4rcq";
-import imgProductImage from "figma:asset/cd8a5c336ba1c87fe7fa2e269822870a77ba3592.png";
-import imgImage1 from "figma:asset/bbe5f08fb22b89432833050893cda46300b2318f.png";
-import imgProductImage1 from "figma:asset/f4d0e827aa29e204b2f9441d26f6933510e62600.png";
-import imgProductImage2 from "figma:asset/f8286689f9715c03e8489a3bdee365c282f6538b.png";
-import imgImage2 from "figma:asset/099edb99409c17d1f669b48012e3ba2f0f7b73c3.png";
-import imgImage3 from "figma:asset/5d7b19ed7c3d8add6cd5768581d762d5aec00716.png";
-import imgImage4 from "figma:asset/7140ac9ef4ed7ee8b39099827f07cd4d6b7f1049.png";
 
 function ExpandIcon() {
   return (
-    <div className="size-10 bg-[#e6e4ff] rounded flex items-center justify-center flex-shrink-0">
+    <div className="size-10 bg-[#e6e4ff] group-hover/product:bg-[#635BFF] transition-colors duration-300 rounded flex items-center justify-center flex-shrink-0">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d={svgPaths.p1c49a180} fill="#635BFF" />
+        <path d={svgPaths.p1c49a180} fill="currentColor" className="text-[#635BFF] group-hover/product:text-white transition-colors duration-300" />
       </svg>
     </div>
   );
@@ -19,38 +12,51 @@ function ExpandIcon() {
 
 interface ProductCardProps {
   title: string;
-  bgImage: string;
-  overlayImage?: string;
-  overlayStyle?: string;
-  bgImageStyle?: string;
+  tint?: string;
+  patternType?: 'dots' | 'grid' | 'lines';
+  heightClass?: string;
 }
 
-function ProductCard({ title, bgImage, overlayImage, overlayStyle, bgImageStyle }: ProductCardProps) {
+function ProductCard({ 
+  title, 
+  tint = "from-white to-blue-50",
+  patternType = "grid",
+  heightClass = "h-[320px] sm:h-[420px] lg:h-[500px]" 
+}: ProductCardProps) {
+  
+  const getPattern = () => {
+    switch(patternType) {
+      case 'dots':
+        return "bg-[radial-gradient(#d1d5db_1px,transparent_1px)] bg-[size:16px_16px]";
+      case 'lines':
+        return "bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,#f3f4f6_10px,#f3f4f6_11px)]";
+      case 'grid':
+      default:
+        return "bg-[linear-gradient(to_right,#f3f4f6_1px,transparent_1px),linear-gradient(to_bottom,#f3f4f6_1px,transparent_1px)] bg-[size:24px_24px]";
+    }
+  };
+
   return (
-    <div className="bg-white rounded border border-[#d0d5dd] overflow-hidden relative">
-      {/* Image area */}
-      <div className="h-[280px] sm:h-[360px] lg:h-[420px] relative overflow-hidden">
-        <img
-          src={bgImage}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          style={bgImageStyle ? { objectPosition: bgImageStyle } : undefined}
-        />
-        {overlayImage && (
-          <img
-            src={overlayImage}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-            style={{ objectPosition: overlayStyle || "center" }}
-          />
-        )}
+    <div className="bg-white rounded-[10px] border border-[#d0d5dd] overflow-hidden relative group/product cursor-pointer transition-shadow hover:shadow-lg">
+      {/* Container Area */}
+      <div className={`${heightClass} relative overflow-hidden bg-white`}>
+        {/* Base Pastel Tint Background (Gradient) */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${tint} opacity-60`}></div>
+
+        {/* CSS Pattern Background */}
+        <div className={`absolute inset-0 ${getPattern()} opacity-[0.6]`}></div>
+        
+        {/* White soft blur glow behind the text for readability */}
+        <div className="absolute -top-[50px] -left-[50px] w-[350px] h-[350px] bg-white rounded-full blur-[60px] z-10 pointer-events-none"></div>
+        
         {/* Expand button */}
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-4 right-4 z-20">
           <ExpandIcon />
         </div>
+        
         {/* Title overlay */}
-        <div className="absolute top-6 left-7">
-          <p className="text-[17px] sm:text-[18px] font-medium text-black tracking-tight whitespace-pre-line">
+        <div className="absolute top-6 left-7 z-20">
+          <p className="text-[17px] sm:text-[18px] font-medium text-black tracking-tight whitespace-pre-line drop-shadow-sm group-hover/product:text-[#635bff] transition-colors duration-300">
             {title}
           </p>
         </div>
@@ -61,22 +67,23 @@ function ProductCard({ title, bgImage, overlayImage, overlayStyle, bgImageStyle 
 
 export function ProductCards() {
   return (
-    <section className="bg-[#f9fafb] py-4 px-4 sm:px-6 lg:px-4">
-      <div className="max-w-[1880px] mx-auto">
+    <section className="bg-[#f9fafb]">
+      <div className="max-w-[1197px] mx-auto border-x border-[#e5e7eb] px-2 sm:px-4 py-4 sm:py-8">
         {/* Desktop: 3-col grid with special layout */}
-        <div className="hidden lg:grid grid-cols-3 gap-4">
+        <div className="hidden lg:grid grid-cols-3 gap-4 sm:gap-6">
           {/* Row 1: Small card (col 1) + Large card (cols 2-3) */}
           <div className="col-span-1">
             <ProductCard
               title="Enable any billing model"
-              bgImage={imgProductImage1}
+              tint="from-white via-white to-blue-100"
+              patternType="dots"
             />
           </div>
           <div className="col-span-2">
             <ProductCard
               title={`Accept and optimize\npayments globally--\nonline and in person`}
-              bgImage={imgProductImage}
-              overlayImage={imgImage1}
+              tint="from-white via-white to-orange-100"
+              patternType="grid"
             />
           </div>
 
@@ -84,22 +91,22 @@ export function ProductCards() {
           <div className="col-span-1">
             <ProductCard
               title={`Monetize through\nagentic commerce`}
-              bgImage={imgProductImage2}
-              overlayImage={imgImage2}
+              tint="from-white via-white to-emerald-100"
+              patternType="lines"
             />
           </div>
           <div className="col-span-1">
             <ProductCard
               title={`Create a card\nissuing program`}
-              bgImage={imgProductImage}
-              overlayImage={imgImage3}
+              tint="from-white via-white to-slate-200"
+              patternType="grid"
             />
           </div>
           <div className="col-span-1">
             <ProductCard
               title={`Access borderless\nmoney movement with\nstablecoins and crypto`}
-              bgImage={imgProductImage}
-              overlayImage={imgImage4}
+              tint="from-white via-white to-indigo-100"
+              patternType="dots"
             />
           </div>
         </div>
@@ -108,28 +115,29 @@ export function ProductCards() {
         <div className="hidden sm:grid lg:hidden grid-cols-2 gap-4">
           <ProductCard
             title="Enable any billing model"
-            bgImage={imgProductImage1}
+            tint="from-white via-white to-blue-100"
+            patternType="dots"
           />
           <ProductCard
             title={`Accept and optimize\npayments globally--\nonline and in person`}
-            bgImage={imgProductImage}
-            overlayImage={imgImage1}
+            tint="from-white via-white to-orange-100"
+            patternType="grid"
           />
           <ProductCard
             title={`Monetize through\nagentic commerce`}
-            bgImage={imgProductImage2}
-            overlayImage={imgImage2}
+            tint="from-white via-white to-emerald-100"
+            patternType="lines"
           />
           <ProductCard
             title={`Create a card\nissuing program`}
-            bgImage={imgProductImage}
-            overlayImage={imgImage3}
+            tint="from-white via-white to-slate-200"
+            patternType="grid"
           />
           <div className="col-span-2">
             <ProductCard
               title={`Access borderless\nmoney movement with\nstablecoins and crypto`}
-              bgImage={imgProductImage}
-              overlayImage={imgImage4}
+              tint="from-white via-white to-indigo-100"
+              patternType="dots"
             />
           </div>
         </div>
@@ -137,17 +145,17 @@ export function ProductCards() {
         {/* Mobile: 1-col stack */}
         <div className="sm:hidden flex flex-col gap-4">
           {[
-            { title: "Enable any billing model", bg: imgProductImage1 },
-            { title: `Accept and optimize\npayments globally--\nonline and in person`, bg: imgProductImage, overlay: imgImage1 },
-            { title: `Monetize through\nagentic commerce`, bg: imgProductImage2, overlay: imgImage2 },
-            { title: `Create a card\nissuing program`, bg: imgProductImage, overlay: imgImage3 },
-            { title: `Access borderless\nmoney movement with\nstablecoins and crypto`, bg: imgProductImage, overlay: imgImage4 },
+            { title: "Enable any billing model", tint: "from-white via-white to-blue-100", patternType: "dots" as const },
+            { title: `Accept and optimize\npayments globally--\nonline and in person`, tint: "from-white via-white to-orange-100", patternType: "grid" as const },
+            { title: `Monetize through\nagentic commerce`, tint: "from-white via-white to-emerald-100", patternType: "lines" as const },
+            { title: `Create a card\nissuing program`, tint: "from-white via-white to-slate-200", patternType: "grid" as const },
+            { title: `Access borderless\nmoney movement with\nstablecoins and crypto`, tint: "from-white via-white to-indigo-100", patternType: "dots" as const },
           ].map((card) => (
             <ProductCard
               key={card.title}
               title={card.title}
-              bgImage={card.bg}
-              overlayImage={card.overlay}
+              tint={card.tint}
+              patternType={card.patternType}
             />
           ))}
         </div>

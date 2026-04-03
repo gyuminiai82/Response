@@ -89,7 +89,7 @@ function FooterColumn({ heading, items, secondHeading, secondItems, hasSignIn }:
         <h4 className="text-[15px] font-semibold text-[#1d2939] mb-1">{heading}</h4>
         <div className="flex flex-col gap-0.5">
           {items.map((item) => (
-            <a key={item} href="#" className="text-[13px] text-[#707986] hover:text-[#635bff] transition-colors py-0.5">
+            <a key={item} href="#" className="text-[13px] text-[#707986] hover:text-[#0a2540] transition-colors py-0.5">
               {item}
             </a>
           ))}
@@ -100,7 +100,7 @@ function FooterColumn({ heading, items, secondHeading, secondItems, hasSignIn }:
           <h4 className="text-[15px] font-semibold text-[#1d2939] mb-1">{secondHeading}</h4>
           <div className="flex flex-col gap-0.5">
             {secondItems.map((item) => (
-              <a key={item} href="#" className="text-[13px] text-[#707986] hover:text-[#635bff] transition-colors py-0.5">
+              <a key={item} href="#" className="text-[13px] text-[#707986] hover:text-[#0a2540] transition-colors py-0.5">
                 {item}
               </a>
             ))}
@@ -119,7 +119,7 @@ function FooterColumn({ heading, items, secondHeading, secondItems, hasSignIn }:
 export function SiteFooter() {
   return (
     <footer className="bg-white border-t border-dashed border-[#d0d5dd]">
-      <div className="max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-4">
+      <div className="max-w-[1197px] mx-auto px-4 sm:px-6 lg:px-4">
         {/* Main footer grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 border-b border-dashed border-[#d0d5dd]">
           {footerColumns.map((col, index) => (

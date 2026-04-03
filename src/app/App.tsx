@@ -10,7 +10,7 @@ import { SiteFooter } from "./components/SiteFooter";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#f9fafb]" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
+    <div className="min-h-screen bg-white" style={{ fontFamily: "'Noto Sans', sans-serif" }}>
       {/* Navigation */}
       <Navbar />
 
@@ -23,7 +23,7 @@ export default function App() {
       {/* Main content wrapper */}
       <div className="bg-[#f9fafb]">
         {/* Flexible Solutions Message */}
-        <div className="max-w-[1880px] mx-auto px-4 sm:px-8 lg:px-6 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-[1197px] mx-auto border-x border-[#e5e7eb] px-4 sm:px-8 lg:px-6 py-12 sm:py-16 lg:py-20">
           <p className="text-[22px] sm:text-[28px] lg:text-[32px] font-semibold text-black tracking-tight leading-snug max-w-[900px]">
             <span>Flexible solutions for every business model. </span>
             <span className="text-[#707986] font-normal">

@@ -1,4 +1,4 @@
-import imgSection5 from "../../assets/b230a1c9826c6c1724876ac5b89d161e0c02ce47.png";
+
 
 const stats = [
   {
@@ -21,17 +21,16 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#1e2948] to-[#a97f7f]">
-      {/* Background image */}
+    <section className="relative overflow-hidden bg-[#0f172a]">
+      {/* Background CSS geometry */}
       <div className="absolute inset-0 pointer-events-none">
-        <img
-          src={imgSection5}
-          alt=""
-          className="absolute w-[182%] h-[174%] max-w-none top-[-2%] left-[-39%] object-cover"
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a] via-transparent to-[#0f172a] opacity-80"></div>
+        <div className="absolute left-[15%] top-0 w-px h-full bg-gradient-to-b from-transparent via-[#635bff30] to-transparent"></div>
+        <div className="absolute right-[15%] top-0 w-px h-full bg-gradient-to-b from-transparent via-[#635bff30] to-transparent"></div>
       </div>
 
-      <div className="relative max-w-[1880px] mx-auto px-4 sm:px-8 py-12 sm:py-16 lg:py-20">
+      <div className="relative max-w-[1197px] mx-auto border-x border-white/10 px-4 sm:px-8 py-12 sm:py-16 lg:py-20">
         <h2 className="text-[28px] sm:text-[40px] lg:text-[52px] font-semibold text-white text-center tracking-tight mb-10 sm:mb-14">
           The backbone<br />of global commerce
         </h2>
@@ -41,11 +40,15 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <div
               key={stat.number}
-              className={`py-6 px-4 text-center border-[rgba(75,123,200,0.2)] ${
+              className={`group relative py-6 px-4 text-center border-[rgba(75,123,200,0.2)] transition-colors duration-300 ${
                 index < stats.length - 1 ? "border-r" : ""
               } ${index >= 2 ? "border-t lg:border-t-0" : ""}`}
             >
-              <p className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold text-white tracking-tight mb-2">
+              {/* Hover gradient borders (Top and Bottom) fade out on both sides */}
+              <div className="absolute top-[-1px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#e52cb1] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+              <div className="absolute bottom-[-1px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#e52cb1] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
+              <p className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold text-white tracking-tight mb-2 relative z-20">
                 {stat.number}
               </p>
               <p className="text-[#f2f4f7] text-[13px] sm:text-[14px] whitespace-pre-line leading-snug">
